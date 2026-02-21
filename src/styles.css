@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --sidebar-width: 260px;
+}
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Inter', sans-serif;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  background: #111827;
+  color: white;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+}
+
+.nav-link {
+  color: #9ca3af;
+  padding: 0.8rem 1.5rem;
+  transition: all 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: white;
+  background: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+  .sidebar { width: 70px; }
+  .main-content { margin-left: 70px; }
+  .nav-link span { display: none; }
+}

@@ -1,0 +1,27 @@
+.activity-feed {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.activity-item {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* Timeline vertical line */
+.activity-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 15px;
+  bottom: 0;
+  width: 2px;
+  background: #e9ecef;
+}
+
+.activity-icon {
+  z-index: 2;
+  background: white;
+  padding: 2px;
+}

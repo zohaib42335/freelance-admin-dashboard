@@ -1,0 +1,62 @@
+<div class="container-fluid p-4">
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-3 border-start border-success border-4">
+        <h6 class="text-muted">Completed Earnings</h6>
+        <h3 class="fw-bold text-success">${{ projectService.totalEarnings() }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-3 border-start border-danger border-4">
+        <h6 class="text-muted">Tasks Overdue (Active)</h6>
+        <h3 class="fw-bold text-danger">{{ projectService.tasksOverdueCount() }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-3 border-start border-primary border-4">
+        <h6 class="text-muted">Total Projects</h6>
+        <h3 class="fw-bold text-primary">{{ projectService.projects().length }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm p-4">
+    <h5 class="fw-bold mb-3">Revenue Projection (Completed Only)</h5>
+    <div style="height: 300px;">
+      <canvas #earningsChart></canvas>
+    </div>
+  </div>
+  <div class="row mt-4">
+  <div class="col-12">
+    <div class="card border-0 shadow-sm p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold mb-0">Live Project Activity</h5>
+        <span class="badge bg-light text-dark border">{{ projectService.activities().length }} events captured</span>
+      </div>
+      
+      <div class="activity-feed">
+        <div *ngFor="let act of projectService.activities()" class="activity-item d-flex mb-3">
+          <div class="activity-icon me-3">
+            <span [ngClass]="{
+              'bg-primary': act.type === 'add',
+              'bg-warning': act.type === 'update',
+              'bg-danger': act.type === 'delete'
+            }" class="rounded-circle d-inline-block" style="width: 12px; height: 12px;"></span>
+          </div>
+          <div class="activity-content flex-grow-1">
+            <p class="mb-0 fw-medium text-dark">{{ act.message }}</p>
+            <small class="text-muted">{{ act.timestamp | date:'shortTime' }} — {{ act.timestamp | date:'mediumDate' }}</small>
+          </div>
+        </div>
+        
+        <div *ngIf="projectService.activities().length === 0" class="text-center py-4 text-muted">
+          <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+          No recent activity logged.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

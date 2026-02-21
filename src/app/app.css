@@ -1,0 +1,72 @@
+/* Sidebar base */
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+  z-index: 1100;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+.main-layout-container {
+  min-width: 0; /* Prevents content from pushing the container wider than viewport */
+}
+
+.nav-link.active {
+  background-color: #0d6efd !important;
+}
+
+/* --- DESKTOP BEHAVIOR --- */
+@media (min-width: 768px) {
+  .sidebar.collapsed {
+    width: 80px;
+    min-width: 80px;
+  }
+  
+  .sidebar.collapsed .sidebar-text {
+    display: none;
+  }
+  
+  .sidebar.collapsed .nav-link {
+    justify-content: center;
+    padding: 12px 0;
+  }
+  
+  .sidebar.collapsed .nav-link i {
+    margin: 0 !important;
+    font-size: 1.25rem;
+  }
+}
+
+/* --- MOBILE BEHAVIOR --- */
+@media (max-width: 767.98px) {
+  .sidebar {
+    position: fixed;
+    left: -280px; /* Hide completely */
+  }
+
+  .sidebar:not(.collapsed) {
+    left: 0;
+  }
+
+  /* Force text to show on mobile when sidebar is open */
+  .sidebar .sidebar-text {
+    display: inline-block !important;
+  }
+
+  /* Full width container fix */
+  .main-layout-container {
+    width: 100vw;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    backdrop-filter: blur(2px);
+  }
+}
