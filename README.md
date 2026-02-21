@@ -56,14 +56,22 @@ The application updates instantly as project data changes, providing a smooth an
 
 ## 🖼 Screenshots
 
-*(Add screenshots here after deployment)*
-
-Example:
-
 * Dashboard Overview
+  
+  ![aa](https://github.com/user-attachments/assets/7cadb668-8d03-4477-b230-e8cb576d84ff)
+
 * Earnings Chart
+  
+  ![bb](https://github.com/user-attachments/assets/ace131ce-cac3-4216-8698-cc880b2ad58c)
+
 * Project Management Table
+  
+  ![cc](https://github.com/user-attachments/assets/987e57f7-9900-46e6-b9fa-5a2b1ee02402)
+
 * Activity Feed
+  
+  ![dd](https://github.com/user-attachments/assets/8c46f3f5-22fc-4e60-b4e2-d2bc24827485)
+
 
 ---
 
