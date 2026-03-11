@@ -1,21 +1,21 @@
 <div class="container-fluid p-4">
   <div class="row g-4 mb-4">
     <div class="col-md-4">
-      <div class="card border-0 shadow-sm p-3 border-start border-success border-4">
+      <div class="card h-100 border-0 shadow-sm p-3 border-start border-success border-4">
         <h6 class="text-muted">Completed Earnings</h6>
         <h3 class="fw-bold text-success">${{ projectService.totalEarnings() }}</h3>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card border-0 shadow-sm p-3 border-start border-danger border-4">
+      <div class="card h-100 border-0 shadow-sm p-3 border-start border-danger border-4">
         <h6 class="text-muted">Tasks Overdue (Active)</h6>
         <h3 class="fw-bold text-danger">{{ projectService.tasksOverdueCount() }}</h3>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card border-0 shadow-sm p-3 border-start border-primary border-4">
+      <div class="card  h-100 border-0 shadow-sm p-3 border-start border-primary border-4">
         <h6 class="text-muted">Total Projects</h6>
         <h3 class="fw-bold text-primary">{{ projectService.projects().length }}</h3>
       </div>

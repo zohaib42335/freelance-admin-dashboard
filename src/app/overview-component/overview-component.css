@@ -25,3 +25,12 @@
   background: white;
   padding: 2px;
 }
+
+.row.g-4 > [class*="col"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.row.g-4 > [class*="col"] .card {
+  flex: 1;
+}

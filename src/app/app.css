@@ -1,72 +1,141 @@
-/* Sidebar base */
+   /* SIDEBAR */
+   
 .sidebar {
-  width: 280px;
-  min-width: 280px;
+  width: 260px;
+  min-width: 260px;
   height: 100vh;
-  transition: all 0.3s ease-in-out;
+  transition: width 0.3s ease, min-width 0.3s ease, left 0.3s ease;
   z-index: 1100;
-  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .main-layout-container {
-  min-width: 0; /* Prevents content from pushing the container wider than viewport */
+  min-width: 0; /* Prevents flex children from overflowing */
+  transition: all 0.3s ease;
+}
+
+
+   /* NAVIGATION */
+  
+.nav-link {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 0.2s ease;
 }
 
 .nav-link.active {
   background-color: #0d6efd !important;
 }
 
-/* --- DESKTOP BEHAVIOR --- */
+.nav-link:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.sidebar-text {
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+   /* DESKTOP (≥ 768px) — Icon-only collapsed mode */
+
 @media (min-width: 768px) {
   .sidebar.collapsed {
-    width: 80px;
-    min-width: 80px;
+    width: 72px;
+    min-width: 72px;
   }
-  
+
   .sidebar.collapsed .sidebar-text {
+    opacity: 0;
+    width: 0;
     display: none;
   }
-  
+
   .sidebar.collapsed .nav-link {
     justify-content: center;
-    padding: 12px 0;
+    padding: 10px 0 !important;
   }
-  
+
   .sidebar.collapsed .nav-link i {
     margin: 0 !important;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+  }
+
+  /* Hide mobile close button on desktop */
+  .sidebar-close-btn {
+    display: none !important;
   }
 }
 
-/* --- MOBILE BEHAVIOR --- */
+
+   /* TABLET / MOBILE (< 768px) — Overlay drawer */
 @media (max-width: 767.98px) {
   .sidebar {
     position: fixed;
-    left: -280px; /* Hide completely */
+    top: 0;
+    left: -280px; /* Hidden off-screen by default */
+    width: 260px;
+    min-width: 260px;
   }
 
-  .sidebar:not(.collapsed) {
+  /* Open state: sidebar slides in */
+  .sidebar.mobile-open {
     left: 0;
   }
 
-  /* Force text to show on mobile when sidebar is open */
+  /* Always show text inside the mobile drawer */
   .sidebar .sidebar-text {
-    display: inline-block !important;
+    display: inline !important;
+    opacity: 1 !important;
+    width: auto !important;
   }
 
-  /* Full width container fix */
+  .sidebar .nav-link {
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
+  }
+
+  .sidebar .nav-link i {
+    margin-right: 0.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Main content always takes full width on mobile */
   .main-layout-container {
     width: 100vw;
+    max-width: 100vw;
   }
+}
 
-  .sidebar-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1050;
-    backdrop-filter: blur(2px);
+/* =============================================
+   BACKDROP (mobile only)
+   ============================================= */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar-backdrop.visible {
+    display: block;
   }
+}
+
+
+.navbar {
+  min-height: 56px;
+  flex-shrink: 0;
+}
+
+
+.main-content {
+  /* Remove any margin-left — layout is flex-based, not margin-based */
+  margin-left: 0 !important;
 }
